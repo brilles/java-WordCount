@@ -22,7 +22,6 @@ public class Main
 
 		for (int i = 0; i < wordsArr.length; i++)
 		{
-			System.out.println(wordsArr[i]);
 			if (wordHashMap.get(wordsArr[i]) != null)
 			{
 				int value = wordHashMap.get(wordsArr[i]);
@@ -33,7 +32,24 @@ public class Main
 				wordHashMap.put(wordsArr[i], 1);
 			}
 		}
-		System.out.println(wordHashMap);
+
+		// Sort HashMap by making an ArrayList and return the top 50 values
+		ArrayList<HashMap.Entry<String, Integer>> sortedMap = new ArrayList<HashMap.Entry<String, Integer>>();
+		sortedMap.addAll(wordHashMap.entrySet());
+
+		Collections.sort(sortedMap, new Comparator<Map.Entry<String, Integer>>()
+		{
+			public int compare (HashMap.Entry<String, Integer> o1, HashMap.Entry<String, Integer> o2)
+			{
+				return  o2.getValue() - o1.getValue();
+			}
+		});
+
+		for (int i = 0; i <= 50; i++)
+		{
+			System.out.println(sortedMap.get(i));
+		}
+		// sortedMap.forEach(w -> System.out.println(w));
 	}
 	public static void main(String[] args)
 	{
