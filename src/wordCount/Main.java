@@ -45,12 +45,17 @@ public class Main
 			}
 		});
 
+		ArrayList<String> topFiftyCount = new ArrayList<String>();
 		for (int i = 0; i <= 50; i++)
 		{
-			System.out.println(sortedMap.get(i));
+			topFiftyCount.add(sortedMap.get(i).toString());
 		}
-		// sortedMap.forEach(w -> System.out.println(w));
+
+		// sort alphabetically
+		Collections.sort(topFiftyCount);
+		topFiftyCount.forEach(w -> System.out.println(w));
 	}
+
 	public static void main(String[] args)
 	{
 		countWords();
